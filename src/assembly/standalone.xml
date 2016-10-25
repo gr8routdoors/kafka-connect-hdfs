@@ -12,7 +12,7 @@
     <fileSets>
         <fileSet>
             <directory>${project.basedir}</directory>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory>.</outputDirectory>
             <includes>
                 <include>README*</include>
                 <include>LICENSE*</include>
@@ -24,8 +24,11 @@
         <dependencySet>
             <outputDirectory>/</outputDirectory>
             <useProjectArtifact>true</useProjectArtifact>
-            <unpack>true</unpack>
+            <unpack>false</unpack>
             <scope>runtime</scope>
+            <excludes>
+                <exclude>org.apache.curator:apache-curator</exclude>  <!-- Don't let curator dump an absolute path pom file into the jar -->
+            </excludes>
         </dependencySet>
     </dependencySets>
 </assembly>
